@@ -66,5 +66,4 @@ inquirer.prompt([
     });
 });
 
-// from this point i got stuck. I couldn't get my sql file input my rows because my column count doesn't match value count at row 1, without being able to 
-// get this to work I couldn't move forward. 
+// from this point i got stuck. I couldn't get my sql file input my rows because my column count doesn't match value count at row 1
