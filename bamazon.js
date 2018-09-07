@@ -9,13 +9,15 @@ var con = mysql.createConnection({
     database: "bamazon",
     socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock"
 });
-
+// pull every item's info from the database
 con.query("SELECT * FROM products", function (err, res) {
     if (err) throw err;
     for (var i = 0; i < res.length; i++) {
         console.log(res[i].item_id + " | " + res[i].product_name + " | " + res[i].department_name + "|" + res[i].price + "|" + res[i].stock_quantity);
     }
 });
+
+// input item name to bid
 inquirer.prompt([
     {
         type: "input",
@@ -30,6 +32,7 @@ inquirer.prompt([
                 ableToBid = true;
             }
         }
+        // ask how much to buy
         if (ableToBid === true) {
             console.log("How much would you like to purchase?");
             inquirer.prompt([
@@ -38,6 +41,7 @@ inquirer.prompt([
                     name: "purchase_ammount",
                     message: "Purchase Ammount: "
                 }
+                // update stock quantity of item after purchase
             ]).then(function (ans) {
                 var x = parseInt(honda.item_name);
                 var y = x - 1;
@@ -66,5 +70,4 @@ inquirer.prompt([
     });
 });
 
-// from this point i got stuck. I couldn't get my sql file input my rows because my column count doesn't match value count at row 1, without being able to 
-// get this to work I couldn't move forward. 
+// from this point i got stuck. I couldn't get my sql file input my rows because my column count doesn't match value count at row 1
